@@ -1,4 +1,5 @@
 using Api.IdentityData;
+using API.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace Api
             services.AddDbContext<AppIdentityDbContext>(options => {
                 options.UseSqlite(Configuration.GetConnectionString("IdentityConnection"));
             });
+            services.AddIdentityService();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
